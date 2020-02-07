@@ -2,3 +2,7 @@
 env/**
 .terraform/**
 terraform.tfstate
+base_infra/.terraform/**
+compute/.terraform/**
+iam/.terraform/**
+config/**

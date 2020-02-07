@@ -4,12 +4,12 @@ provider "aws" {
 }
 locals {
   private_subnet = data.terraform_remote_state.network.outputs.private_subnet
-  sg = data.terraform_remote_state.network.outputs.sg
-  instance_profile = data.terraform_remote_state.iam.outputs.instance_profile
-  lb_sg = data.terraform_remote_state.network.outputs.lb_sg
+  sg = data.terraform_remote_state.network.outputs.output_infra["sg"]
+  instance_profile = data.terraform_remote_state.iam.outputs.output_iam["ins_profile"]
+  lb_sg = data.terraform_remote_state.network.outputs.output_infra["lb_sg"]
   subnet = data.terraform_remote_state.network.outputs.public_subnet
-  vpc_id = data.terraform_remote_state.network.outputs.vpc_id
-  public_sg = data.terraform_remote_state.network.outputs.public_sg
+  vpc_id = data.terraform_remote_state.network.outputs.output_infra["vpc_id"]
+  public_sg = data.terraform_remote_state.network.outputs.output_infra["public_sg"]
 }
 module "ec2" {
   source = "../modules/ec2"

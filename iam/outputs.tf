@@ -1,3 +1,7 @@
-output "instance_profile" {
-  value = module.iam.instance_profile
+output "output_iam" {
+  value = "${
+    map(
+      "ins_profile", "${module.iam.instance_profile}"
+    )
+  }"
 }
